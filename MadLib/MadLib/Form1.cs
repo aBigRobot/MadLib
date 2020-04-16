@@ -47,7 +47,7 @@ namespace MadLib
 
             MessageBox.Show("GOOD JOB! Enjoy the story below: \n" +
                             "If you go to some " + box1 + " place like Yellowstone " +
-                            "National " + box2 + ", you must know how to deal with the " +
+                            "National " + box2 + " Park, you must know how to deal with the " +
                             "wild animals such as bears, wolves, and " + box3 + ". " +
                             "The most important of these is the bear. There are three kinds of bears, " +
                             "the grizzly bear, the " + box4 + " bear, and the " + box5 + " bear. Bears spend most of their time " + 
