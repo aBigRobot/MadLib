@@ -12,6 +12,10 @@ namespace MadLib
 {
     public partial class Form1 : Form
     {
+
+        List<Panel> listPanel = new List<Panel>();
+        int index = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -43,21 +47,32 @@ namespace MadLib
             string box18 = textBox18.Text;
             string box19 = textBox19.Text;
             string box20 = textBox20.Text;
+            string theLib = "";
 
 
-            MessageBox.Show("GOOD JOB! Enjoy the story below: \n" +
+            theLib += "GOOD JOB! Enjoy the story below: \n \n" +
                             "If you go to some " + box1 + " place like Yellowstone " +
                             "National " + box2 + " Park, you must know how to deal with the " +
                             "wild animals such as bears, wolves, and " + box3 + ". " +
                             "The most important of these is the bear. There are three kinds of bears, " +
-                            "the grizzly bear, the " + box4 + " bear, and the " + box5 + " bear. Bears spend most of their time " + 
+                            "the grizzly bear, the " + box4 + " bear, and the " + box5 + " bear. Bears spend most of their time " +
                             box6 + " or " + box7 + ". They look very " + box8 + ", but " +
                             "if you make them " + box9 + ", they might bite your " + box10 + "! Bears will come up " +
                             "to your car and beg for " + box11 + ". They will stand on their hind legs and clap their " +
-                            box12 + " together and pretend to be " + box13 + ". But do NOT get out of your " + box14 + 
-                            " or offer the bears " + box15 + " or " + box16 + ". This same advice applies to other wild " + 
+                            box12 + " together and pretend to be " + box13 + ". But do NOT get out of your " + box14 +
+                            " or offer the bears " + box15 + " or " + box16 + ". This same advice applies to other wild " +
                             "creatures such as " + box17 + " and " + box18 + ". Remember all these rules and you will spend " +
-                            "your vacation " + box19 + " and not get eaten by a/an " + box20 + ".");
+                            "your vacation " + box19 + " and not get eaten by a/an " + box20 + ".";
+
+            //When madLib is submitted, pass string to label "theLib"
+            this.theStory.Text = theLib;
+
+            //Make panel active based on index counter and add to counter
+            if (index < listPanel.Count - 1)
+            {
+                listPanel[++index].BringToFront();
+            }                
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -82,6 +97,27 @@ namespace MadLib
             {
                 button1.PerformClick();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            listPanel.Add(panel1);
+            listPanel.Add(panel2);
+            listPanel[index].BringToFront();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //knock counter down 1 to go back to previous panel
+            if (index > 0)
+            {
+                listPanel[--index].BringToFront();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
